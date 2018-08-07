@@ -35,8 +35,8 @@ app.use(session({
 		saveUninitialized: false,
 		cookie: config.session.cookie,
 		store: new MongoStore({
-	  	url: config.url
-	})
+			url: config.url
+		})
 }))
 
 app.use(expressWinston.logger({

@@ -2,7 +2,10 @@
 
 import mongoose from 'mongoose';
 import config from 'config-lite';
-mongoose.connect(config.url, {server:{auto_reconnect:true}});
+mongoose.connect(config.url, {
+    autoReconnect:true,
+    useMongoClient: true,
+});
 mongoose.Promise = global.Promise;
 
 const db = mongoose.connection;
@@ -19,7 +22,10 @@ db.on('error', function(error) {
 
 db.on('close', function() {
     console.log('数据库断开，重新连接数据库');
-    mongoose.connect(config.url, {server:{auto_reconnect:true}});
+    mongoose.connect(config.url, {
+        autoReconnect:true,
+        useMongoClient: true,
+    });
 });
 
 export default db;
