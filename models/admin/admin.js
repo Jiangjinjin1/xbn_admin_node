@@ -1,6 +1,10 @@
 'use strict';
 
 import mongoose from 'mongoose'
+import db from '../../mongodb/db'
+
+// 要注意，直到 model 使用的数据库连接（ connection ）被打开，tanks 才会被创建/删除。每个 model 都有一个绑定的连接。 如果 model 是通过调用 mongoose.model() 生成的，它将使用 mongoose 的默认连接。
+// 如果自行创建了连接，就需要使用 connection 的 model() 函数代替 mongoose 的 model() 函数。
 
 const Schema = mongoose.Schema;
 
@@ -21,7 +25,7 @@ const xbnuserSchema = new Schema({
 
 xbnuserSchema.index({id: 1});
 
-const User = mongoose.model('Xbnuser', xbnuserSchema);
+const User = db.model('Xbnuser', xbnuserSchema);
 
 const xbnadminSchema = new Schema({
 	admin_name: { type: String , index: true},
@@ -39,7 +43,7 @@ const xbnadminSchema = new Schema({
 
 xbnadminSchema.index({id: 1});
 
-const Admin = mongoose.model('Xbnadmin', xbnadminSchema);
+const Admin = db.model('Xbnadmin', xbnadminSchema);
 
 const role_operationSchema = new Schema({
 	role_id: Number,
@@ -50,7 +54,7 @@ const role_operationSchema = new Schema({
 
 role_operationSchema.index({id: 1});
 
-const Role_opera = mongoose.model('Xbnrole_operation', role_operationSchema);
+const Role_opera = db.model('Xbnrole_operation', role_operationSchema);
 
 const rolepermissionsSchema = new Schema({
 	operation_id:Number,
@@ -64,7 +68,7 @@ const rolepermissionsSchema = new Schema({
 
 rolepermissionsSchema.index({id: 1});
 
-const Permissions = mongoose.model('Xbnpermissions', rolepermissionsSchema);
+const Permissions = db.model('Xbnpermissions', rolepermissionsSchema);
 
 
 export default {User,Admin,Permissions,Role_opera}

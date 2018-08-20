@@ -4,6 +4,7 @@
 'use strict';
 
 import mongoose from 'mongoose'
+import db from '../../mongodb/db'
 
 const Schema = mongoose.Schema;
 
@@ -16,7 +17,7 @@ const xbnmenuSchema = new Schema({
 
 xbnmenuSchema.index({id: 1});
 
-const Xbnmenu = mongoose.model('Xbnmenu', xbnmenuSchema);
+const Xbnmenu = db.model('Xbnmenu', xbnmenuSchema);
 
 
 export default Xbnmenu

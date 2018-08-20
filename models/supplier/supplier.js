@@ -1,6 +1,7 @@
 'use strict';
 
 import mongoose from 'mongoose'
+import db from '../../mongodb/db'
 
 const Schema = mongoose.Schema;
 
@@ -62,6 +63,6 @@ const companySchema = new Schema({
 
 companySchema.index({id: 1});
 
-const Company = mongoose.model('Xbncomp', companySchema);
+const Company = db.model('Xbncomp', companySchema);
 
 export default {Company}

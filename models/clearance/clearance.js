@@ -1,6 +1,7 @@
 'use strict';
 
 import mongoose from 'mongoose'
+import db from '../../mongodb/db'
 
 const Schema = mongoose.Schema;
 
@@ -67,7 +68,7 @@ const clearanceSchema = new Schema({
 
 clearanceSchema.index({id: 1});
 
-const Clearance = mongoose.model('Xbnclearance', clearanceSchema);
+const Clearance = db.model('Xbnclearance', clearanceSchema);
 
 const goodSchema = new Schema({
     "export_goods_id":Number,
@@ -96,6 +97,6 @@ const goodSchema = new Schema({
 
 goodSchema.index({id: 1});
 
-const Good = mongoose.model('Xbngood', goodSchema);
+const Good = db.model('Xbngood', goodSchema);
 
 export default {Clearance,Good}
