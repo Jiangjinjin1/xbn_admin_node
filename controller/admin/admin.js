@@ -43,7 +43,7 @@ class Admin {
 			}
 			const newpassword = this.encryption(password);
 			try{
-				const ip = req.headers['x-real-ip'] ? req.headers['x-real-ip'] : req.ip.replace(/::ffff:/, '');
+				const ip = req.headers['x-real-ip'] ? req.headers['x-real-ip'] : req.ip.replace(/::ffff:/, '');// 获取原始ip
 				console.log(ip)
 				const query = {
 					"lastLoginTime":dtime().format('YYYY-MM-DD HH:mm'),
